@@ -125,15 +125,18 @@ func (ll *linkedList) Index(val any) (int, error) {
 	return -1, fmt.Errorf("value not found")
 }
 
-func (ll *linkedList) Print() {
+func (ll *linkedList) ToString() string {
 	if ll.len == 0 {
-		return
+		return "[]"
 	}
-	fmt.Printf("[")
+
+	res := fmt.Sprintf("[ %v", ll.head.value)
 	currentNode := ll.head
 	for currentNode.next != nil {
-		fmt.Printf("%v ", currentNode.value)
 		currentNode = currentNode.next
+		res = fmt.Sprintf("%s %v", res, currentNode.value)
 	}
-	fmt.Printf("%v ]", currentNode.value)
+	res = fmt.Sprintf("%s ]", res)
+
+	return res
 }

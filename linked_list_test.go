@@ -90,3 +90,12 @@ func TestLinkedList_Remove(t *testing.T) {
 		t.Errorf("value is %v, must be %v", output, expected)
 	}
 }
+
+func TestLinkedList_ToString(t *testing.T) {
+	ll := NewLinkedList().Set(31).Append(12).Append("hello")
+	expected := "[ 31 12 hello ]"
+	output := ll.ToString()
+	if expected != output {
+		t.Errorf("value is %v, must be %v", output, expected)
+	}
+}
