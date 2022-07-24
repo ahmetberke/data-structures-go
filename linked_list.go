@@ -3,7 +3,6 @@ package data_structures
 import "fmt"
 
 type node struct {
-	list  *linkedList
 	value any
 	next  *node
 }
@@ -11,19 +10,6 @@ type node struct {
 type linkedList struct {
 	head *node
 	len  int
-}
-
-func (n *node) Index() int {
-	index := 0
-	currentNode := n.list.head
-	for currentNode.next != nil {
-		if currentNode == n {
-			return index
-		}
-		currentNode = currentNode.next
-		index++
-	}
-	return index
 }
 
 func NewLinkedList() *linkedList {
@@ -37,7 +23,6 @@ func (ll *linkedList) Set(vals ...any) *linkedList {
 		return ll
 	}
 	ll.head = &node{
-		list:  ll,
 		value: vals[0],
 		next:  nil,
 	}
@@ -46,7 +31,6 @@ func (ll *linkedList) Set(vals ...any) *linkedList {
 	currentNode := ll.head
 	for _, v := range vals[1:] {
 		currentNode.next = &node{
-			list:  ll,
 			value: v,
 			next:  nil,
 		}
@@ -69,7 +53,7 @@ func (ll *linkedList) Append(val any) *linkedList {
 		for currentNode.next != nil {
 			currentNode = currentNode.next
 		}
-		currentNode.next = &node{value: val, list: ll}
+		currentNode.next = &node{value: val}
 	}
 	ll.len++
 	return ll
@@ -79,7 +63,6 @@ func (ll *linkedList) Prepend(val any) *linkedList {
 	ll.head = &node{
 		value: val,
 		next:  ll.head,
-		list:  ll,
 	}
 	ll.len++
 	return ll

@@ -82,16 +82,6 @@ func TestLinkedList_Length(t *testing.T) {
 	}
 }
 
-func TestNode_Index(t *testing.T) {
-	ll := NewLinkedList().Set(31).Prepend(12).Append("hello")
-	n := ll.Find(31)
-	expected := 1
-	output := n.Index()
-	if expected != output {
-		t.Errorf("value is %v, must be %v", output, expected)
-	}
-}
-
 func TestLinkedList_Remove(t *testing.T) {
 	ll := NewLinkedList().Set(31).Prepend(12).Append("hello").Remove(12)
 	expected := "hello"
