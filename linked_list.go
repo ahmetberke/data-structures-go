@@ -2,11 +2,6 @@ package data_structures
 
 import "fmt"
 
-type node struct {
-	value any
-	next  *node
-}
-
 type linkedList struct {
 	head *node
 	len  int
